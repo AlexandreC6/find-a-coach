@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Filter</h3>
+    <coach-filter @change="setFilters"></coach-filter>
   </section>
   <section>
     <base-card>
@@ -22,12 +22,14 @@
 </template>
 
 <script>
-  import CoachItem from '@/components/coaches/CoachItem.vue'
-import BaseButton from '@/components/ui/BaseButton.vue';
+import CoachItem from '@/components/coaches/CoachItem.vue';
+// import BaseButton from '@/components/ui/BaseButton.vue';
+import CoachFilter from '@/components/coaches/CoachFilter.vue';
+
 export default {
   components: {
     CoachItem,
-    BaseButton
+    CoachFilter
   },
   computed: {
     filteredCoach(){
@@ -36,6 +38,9 @@ export default {
     hasACoach(){
       return this.$store.getters['coaches/hasACoaches'];
     }
+  },
+  methods: {
+
   }
 }
 </script>
