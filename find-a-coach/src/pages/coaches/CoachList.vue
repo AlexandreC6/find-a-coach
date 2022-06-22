@@ -5,7 +5,7 @@
   <section>
     <base-card>
       <base-button mode='outline'>Refresh</base-button>
-      <base-button link to="/register">Register as a Coach</base-button>
+      <base-button v-if="!isCoach" link to="/register" >Register as a Coach</base-button>
       <h3 v-if="!hasACoach">Not coach avalaible</h3>
       <h3 v-else>All the coaches</h3>
         <coach-item v-for="coach in filteredCoach"
@@ -40,6 +40,9 @@ export default {
     CoachFilter
   },
   computed: {
+    isCoach() {
+      return this.$store.getters['coaches/isCoach'];
+    },
     filteredCoach(){
       const coaches = this.$store.getters['coaches/coaches'];
       return coaches.filter(coach => {
