@@ -11,9 +11,14 @@ const router = createRouter({
   routes: [
     {path: '/', redirect: '/coaches'},
     {path: '/coaches', component: CoachList },
-    {path: '/coaches/:id', component: CoachDetails, props: true, children: [
-      {path: 'contact', component: ContactCoach} //coaches/c1/contact => contact specific coach
-    ]},
+    {
+      path: '/coaches/:id',
+      component: CoachDetails,
+      props: true,
+      children: [
+        { path: 'contact', component: ContactCoach } // /coaches/c1/contact
+      ]
+    },
     {path: '/register', component: CoachRegistration},
     {path: '/requests', component: RequestReceived},
     {path: '/:notFound(.*)', component: NotFound} // Eror 404
